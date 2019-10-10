@@ -29,9 +29,11 @@ int main()
     int n=0, m=0, t=0;
 
     while (i<M) {                                                                               //lettura matrice e creazione array
-        while (j<=(N-z)) {
+        while (j<N) {
             while (n<z) {
-                m=m+V[j+n][i];
+                if ((j+n)<N) {
+                    m=m+V[j+n][i];
+                }
                 n++;
             }
             if (m>=s) {
