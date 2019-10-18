@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1570735017 source:/home/francesco/Documenti/insight/Morra cinese/main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
