@@ -10,14 +10,18 @@ class board
         char opp_move;        //opponent move
         char symb;            //choice of X or O
         char opp_symb;        //symbol not chosen by player
+        char winner;          //winner of the game
     public:
         board();              //initializer
         void playerSymb();    //makes user choose X or O
         void chooseCell();    //makes user choose a cell for their move
         void plMove();        //makes user move
-        int chooseMove();    //algorithm that chooses the best move
+        int chooseMove();     //returns the best move from minimax algorithm
         void oppMove();       //actually makes a move on the board
-        bool checkTris();     //checks if someone won
+        int evaluate();       //evaluate the state of the board
+        int minimax();        //minimax algorithm
+        char checkTris();     //checks if someone won
+        bool checkDraw();     //checks if there is a tie
         bool checkEmpty();    //checks if chosen cell is empty
         void showBoard();     //outputs the state of the board
         void clearBoard();    //clears the board

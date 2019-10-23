@@ -9,6 +9,7 @@ board::board()
     col='a';
     col_num=0;
     opp_move=' ';
+    winner=' ';
     for(int i=0; i<3; i++) {
         for(int j=0; j<3; j++) {
             cells[i][j]=' ';
@@ -116,4 +117,66 @@ void board::oppMove()
     row = choice[0];
     col_num = choice[1];
     cells[row][col_num] = opp_symb;
+}
+
+char board::checkTris()
+{
+    for (int i=0; i<3; i++) {
+        if (cells[i][0]==cells[i][1]&&cells[i][0]==cells[i][2]&&cells[i][0]!=' ') {
+            winner = cells[i][0];
+            return winner;
+        }
+    }
+    for (int j; j<3; j++) {
+        if (cells[0][]==cells[1][0]&&cells[0][0]==cells[2][0]&&cells!=' ') {
+            winner = cells[0][0];
+            return winner;
+        }
+    }
+    if ((cells[0][0]==cells[1][1]&&cells[0][0]==cells[2][2])||(cells[0][2]==cells[1][1]&&cells[0][2]==cells[2][0])) {
+        winner = cells[0][0];
+        return winner;
+    }
+    return ' ';
+}
+
+bool board::checkDraw()
+{
+    for (int i=0; i<3; i++) {
+        for (int j=0; j<3; j++) {
+            if (cells[i][j]==' ') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+int board::evaluate()
+{
+    char check = checkTris();
+    if (check==symb) {
+        return +10;
+    }
+    else if (check==opp_symb) {
+        return -10;
+    }
+    else {
+        return 0;
+    }
+}
+
+int board::minimax(int depth, bool isMax)
+{
+    score = evaluate();
+    if (score==10||score==-10) {
+        return score;
+    }
+    if (checkDraw()) {
+        return 0;
+    }
+
+    if (isMax) {
+        int best = -1000;
+    }
 }
