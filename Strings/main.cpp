@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -15,17 +16,12 @@ int main()
     string both="", aux="";
     for (int i=0; i<name.length(); i++) {
         for (int j=0; j<surname.length(); j++) {
-            if (name[i]==surname[j]) {
+            if (name[i]==surname[j]&&(any_of(both[0], both[both.length()-1], name[i]))) {
                 both+=name[i];
             }
         }
     }
-    for (int t=0; t<both.length(); t++) {
-        if (both[t]!=both[t+1]) {
-            aux+=both[t];
-        }
-    }
-    cout << "I caratteri in comune sono: " << aux <<endl;
+    cout << "I caratteri in comune sono: " << both <<endl;
 
     //3.
     int counter_n=0, counter_s=0;
@@ -40,13 +36,9 @@ int main()
         switch (name[i])
         {
             case 'a':
-                break;
             case 'e':
-                break;
             case 'i':
-                break;
             case 'o':
-                break;
             case 'u':
                 break;
             default:
